@@ -23,8 +23,9 @@ type DatabaseConfig struct {
     DSN             string `mapstructure:"dsn"`
     MaxOpenConns    int    `mapstructure:"max_open_conns"`
     MaxIdleConns    int    `mapstructure:"max_idle_conns"`
-    ConnMaxLifetime string `mapstructure:"conn_max_lifetime"` 
+    ConnMaxLifetime string `mapstructure:"conn_max_lifetime"`
 }
+
 
 type JWTConfig struct {
     Secret         string `mapstructure:"secret"`
@@ -44,7 +45,9 @@ type RedisConfig struct {
 type AppConfig struct {
     Version         string `mapstructure:"version"`
     ShutdownTimeout string `mapstructure:"shutdown_timeout"`
+    Port            string `mapstructure:"port"`
 }
+
 
 func LoadConfig(path string) (*Config, error) {
     v := viper.New()

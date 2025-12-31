@@ -1,52 +1,28 @@
 app:
-  name: portfolio-tracker
-  env: dev            # dev / stage / prod
-  version: 0.1.0
-
-server:
-  host: "0.0.0.0"
-  port: 8080
-  read_timeout: 5s
-  write_timeout: 10s
-  shutdown_timeout: 10s
+  version: "0.1.0"
+  shutdown_timeout: "5s"
+  port: "8080"
 
 logger:
-  level: "debug"     # debug / info / warn / error
-  json: true
+  level: "debug"
+  json: false
 
 database:
-  driver: "postgres" 
-  dsn: "postgres://guidi:guidiguidi@localhost:5432/portfolio?sslmode=disable"
+  driver: "postgres"
+  dsn: "postgres://pt_user:pt_pass@localhost:5432/portfolio?sslmode=disable"
   max_open_conns: 10
   max_idle_conns: 5
-  conn_max_lifetime: 1h
+  conn_max_lifetime: "30m"
+
 
 jwt:
-  secret: "super-secret-key-change-me"
-  access_token_ttl: 15m
-  refresh_token_ttl: 720h   
+  secret: "super-secret"
+  access_token_ttl: "15m"
+  refresh_token_ttl: "720h"
 
 coingecko:
   base_url: "https://api.coingecko.com/api/v3"
-  request_timeout: 5s
+  request_timeout: "5s"
 
 redis:
-  enabled: true
-  addr: "localhost:6379"
-  password: ""
-  db: 0
-
-nats:
   enabled: false
-  url: "nats://localhost:4222"
-  user: ""
-  password: ""
-  reconnect_wait: 2s
-
-metrics:
-  enabled: true
-  port: 9090
-
-swagger:
-  enabled: true
-  path: "/swagger/index.html"
